@@ -90,6 +90,72 @@ function DBgetUserLevelsIds(id, callback) {
   });
 }
 
+// function idToSearch(levelId) {
+//   return function searchLevel(callback) {
+//     db_level.get(levelId, function(err, doc){
+//       callback(err, doc);
+//     })
+//   });
+// }
+
+// function DBgetUserLevels(id, callback) {
+//   db_user.get(id).then(function (doc) {
+//     var searchArray = [];
+//     for (i = 0; i < doc.levels.length; ++i) {
+//       searchArray.push(idToSearch(doc.levels[i]));
+//     }
+
+//     searchArray = _.map(doc.levels, function(level) {
+//       return idToSearch(level);
+//     })
+
+//     async.parallel(searchArray, function searchDone(err, results) {
+//       if (err)
+//         return;
+//       //results
+
+//       callback(results);
+//     })
+  
+//   }).catch(function (err) {
+//     callback(err.status);
+//   });
+// }
+
+function DBgetUserLevels(id, callback) {
+  db_user.get(id).then(function (doc) {
+    var levels_ids = doc.levels;
+    var result = db_level.allDocs({include_docs: true}, function(err, response){
+      console.log('inside alldocs ' + JSON.stringify(response.rows));
+      return response;
+    });
+    return result;
+  }).then(function (result) {
+    // all_docs = result[0];
+    // level_ids = result[1];
+    // search_result = [];
+    console.log(result);
+    search_result = result;
+
+    // // Iterates over the levels ids of the user
+    // for (var i = level_ids.length - 1; i >= 0; i--) {
+    //   // Finds the level with the corresponding id and adds it to the 
+    //   // search_result array
+    //   for (var j = all_docs.rows.length - 1; j >= 0; j--) {
+    //     if (all_docs.rows[j].doc._id == level_ids[i]) {
+    //       search_result.push(all_docs.rows[j].doc);
+    //       break;
+    //     }
+    //   };
+    // };
+    
+    callback(search_result);
+  }).catch(function (err) {
+    console.log('error get user levels');
+    callback(err.status);
+  });
+}
+
 function DBaddUserCard(id, card_id, callback){
   db_user.get(id).then(function (doc) {
     doc.levels.push(card_id);
