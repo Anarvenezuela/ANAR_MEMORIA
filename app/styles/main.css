@@ -44,3 +44,31 @@ body {
 #button_register {
     color: #4DAF4E;
 }
+
+.row {
+    margin: 0;
+}
+
+.title {
+    border-bottom: 1px solid lightgrey;
+}
+
+.primary {
+    color: #4DAF4E !important;
+}
+
+.primary_background {
+    background-color: #4DAF4E !important;
+}
+
+.navbar-brand {
+    font-size: 1.7em;
+}
+
+.navbar-icon {
+    font-size: 1.5em;
+}
+
+.navbar {
+    padding: 0 8.33333333%;
+}
