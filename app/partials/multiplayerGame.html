@@ -1,0 +1,237 @@
+<link rel="stylesheet" href="styles/game.css">
+
+<div class="primary_background navbar navbar-default ">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" ng-init="isCollapsed = true" ng-click="isCollapsed = !isCollapsed">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand">Modo Multijugador | Nivel {{gamedata.difficulty}}</a>
+    </div>
+    <div class="navbar-collapse" ng-class="{collapse: isCollapsed}">
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+
+                <a href="#" ng-click="isLeaving()">
+                    <i class="mdi-action-exit-to-app navbar-icon"></i>
+                    Salir
+                </a>
+
+            </li>
+        </ul>
+    </div>
+</div>
+
+<!-- Dialogo modal para salir del juego-->
+<div id="exitModal" class="modal" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" style="color: black; text-align: center;">
+                <h4 class="modal-title gothic">¿Abandonarás la partida?</h4>
+            </div>
+            <div class="modal-body textAlert" style="color: black;">
+                <p>Estas apunto de abandonar la partida, si sales ahora no ganarás puntos. ¿Seguro quieres salir?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal" style="background-color: #993300;" ng-click="leaveGame()">
+          Si
+        </button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" style="background-color: #993300;" ng-click="notLeaveGame()">
+          No
+        </button>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade"></div>
+</div>
+
+<!-- Alertas Dialogos Modales -->
+<div id="alerts" class="modal fade" style="display: none; border-radius: 25px;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div miv class="modal-header" style="color: black; text-align: center;">
+        <h4 class="modal-title">¡Atención!</h4>
+      </div>
+      <div class="modal-body" style="color: black;">
+        <p>{{textAlert}}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal" style="background-color: #993300;"
+                ng-click="closeAlert()">
+          Aceptar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ....................................................................... -->
+<!-- Barras donde se mostrarán la información del score de los jugadores. -->
+<div id="player_info">
+    <div ng-if="token == true">
+      <b>Tu turno: {{mydata.username}} <br> {{mydata.score}} puntos</b>
+    </div>
+    <div ng-if="token != true"->
+      {{mydata.username}} <br> {{mydata.score}} puntos
+    </div>
+</div>
+
+<div id="timerBar">
+  <img src="images/reloj.gif" style="margin: 0">
+    {{counter}}
+</div>
+
+<div id="player_info">
+  <div ng-if="token != true">
+    <b> Turno de: {{other_player_data.username}} <br> {{other_player_data.score}} puntos</b>
+  </div>
+  <div ng-if="token == true"->
+    {{other_player_data.username}} <br> {{other_player_data.score}} puntos
+  </div>
+</div>
+<!-- ....................................................................... -->
+
+<!-- Para el tablero multijugador -->
+<div id="multiplayer_game_space">
+    <div id="multiplayer_game" class="recuadro" style="display: none">
+        <div class="recuadro-blanco redondeado">
+            <div>
+                <div ng-repeat="i in [] | range: cards.length / 5">
+                    <div class="row" ng-class="{'last':$last}">
+                        <div class="col-md-1"></div>
+                        <div class="col-xs-6 col-md-2" ng-repeat="j in array">
+                            <div style="position: relative; left: 0; top: 0;">
+                                <div>
+                                    <img ng-click="showCard(i*5 + j)" class="{{cards[i*5 + j]._id}} card" ng-src="{{cards[i*5 + j].imageShown}}" />
+                                </div>
+                                <div ng-if="conLupa">
+                                    <div ng-click="hacerZoom(cards[i*5 + j])">
+                                        <img class="lupa" id="{{cards[i*5+j].position}}" src="images/lupa.png" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-1"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ....................................................................... -->
+    <!-- Pantalla de ganar el juego -->
+    <div id="win_screen" style="display: none;">
+        <div class="row recuadro-blanco redondeado mensaje-multiplayer">
+            <div class="col-md-2">
+                <img src="images/inicio-der1.png" width="60%" height="60%">
+            </div>
+            <div class="col-md-4 gothic">
+                <h1>¡GANASTE!</h1>
+                <h3> Puntos por Ganar: {{score_por_ganar}}.</h3>
+                <h3> Puntos por Nro. Cartas: {{mydata.score}}.</h3>
+                <h3> Puntos Totales: {{score_por_ganar + mydata.score}}.</h3>
+                <button id="button_confirm" ng-click="closeGame()" class="btn">
+                  Continuar
+                  <div class="ripple-wrapper"></div>
+              </button>
+            </div>
+            <div class="col-md-4">
+              <h3>Desbloqueaste esta carta</h3>
+                <img height="60%" width="60%" ng-src="{{obtainedCard.image}}">
+                <p>{{obtainedCard.name}}</p>
+            </div>
+            <div class="col-md-2">
+                <img src="images/inicio-izq1.png" width="60%" height="60%">
+            </div>
+        </div>
+    </div>
+    <!-- Pantalla de perdida de juego  -->
+    <div id="lose_screen" style="display: none;">
+        <div class="row recuadro-blanco redondeado mensaje-multiplayer">
+            <div class="col-md-2">
+                <img src="images/inicio-der1.png" width="60%" height="60%">
+            </div>
+            <div class="col-md-8">
+                <h1>Lo sentimos</h1>
+                <h3>Tu contrincante ha ganado, mejor suerte la proxima vez. </h3>
+                <h3> Has ganado {{score_por_perder}} Puntos por jugar.</h3>
+                <button id="button_confirm" ng-click="closeGame()" class="btn">
+                  Continuar
+                  <div class="ripple-wrapper"></div>
+              </button>
+            </div>
+            <div class="col-md-2">
+                <img src="images/inicio-izq1.png" width="60%" height="60%">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ....................................................................... -->
+<!--Para mostrar las cartas obtenidas-->
+<div id="obtenidas"></div>
+<div id="obtenidasOp"></div>
+
+<!-- ....................................................................... -->
+
+<div id="player_logout" style="display: none;">
+    <div class="row recuadro-blanco redondeado mensaje-multiplayer">
+        <div class="col-md-2">
+            <img src="images/inicio-der1.png" width="60%" height="60%">
+        </div>
+        <div class="col-md-8">
+            <h1>¡Opps!</h1>
+            <h2>El jugador {{other_player_data.username}} ha abandonado la partida.</h2>
+            <button id="button_confirm" ng-click="closeGame()" class="btn">
+                Finalizar Juego
+                <div class="ripple-wrapper"></div>
+            </button>
+        </div>
+        <div class="col-md-2">
+            <img src="images/inicio-izq1.png" width="60%" height="60%">
+        </div>
+    </div>
+</div>
+
+<div id="time_up" style="display: none;">>
+    <div class="row recuadro-blanco redondeado mensaje-multiplayer">
+        <div class="col-md-2">
+            <img src="images/inicio-der1.png" width="60%" height="60%">
+        </div>
+        <div class="col-md-8">
+            <h1>¡Se acabó el tiempo!</h1>
+            <h2>El ganador del juego sera el jugador con mayor puntaje.</h2>
+            <button id="button_confirm" ng-click="closeGame()" class="btn">
+                Finalizar
+                <div class="ripple-wrapper"></div>
+            </button>
+        </div>
+        <div class="col-md-2">
+            <img src="images/inicio-izq1.png" width="60%" height="60%">
+        </div>
+    </div>
+</div>
+
+<!-- Esta es la primera vista que se muestra -->
+<div id="wait_other_player">
+    <div class="row recuadro-blanco redondeado mensaje-multiplayer">
+        <div class="col-md-2">
+            <img src="images/inicio-der1.png" width="60%" height="60%">
+        </div>
+        <div class="col-md-8">
+            <h2 class="gothic">Busco contrincante</h2>
+            <h3 class="gothic">¡Espere un momento!</h3>
+            <div>
+                <img src="images/reloj.gif" style="margin: 0">
+            </div>
+            <button id="button_confirm" ng-click="closeGame()" class="btn">
+                Cancelar
+                <div class="ripple-wrapper"></div>
+            </button>
+        </div>
+        <div class="col-md-2">
+            <img src="images/inicio-izq1.png" width="60%" height="60%">
+        </div>
+    </div>
+</div>

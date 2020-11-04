@@ -1,8 +1,145 @@
-/* Colors 
+/* Colors
  *
- * Primary #4DAF4E
- * Primary Dark 
+ * Primary #993300
+ * Primary Dark
  */
+
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+/* MEDIA QUERIES */
+
+@media (min-width: 320px) {
+  .container_level{
+    margin-bottom: 4%;
+  }
+
+  .instrucciones h2, h4{
+    font-size: 12px;
+  }
+
+  .instrucciones p{
+    font-size: 10px;
+  }
+
+  #main{
+    padding-top: 0%;
+  }
+}
+
+@media (min-width: 420px) {
+
+  .instrucciones h2, h4{
+    font-size: 14px;
+  }
+
+  .instrucciones p{
+    font-size: 12px;
+  }
+}
+
+@media (min-width: 600px) {
+
+  .instrucciones h2, h4{
+    font-size: 16px;
+  }
+
+  .instrucciones p{
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container_level{
+    margin-bottom: 0%;
+  }
+
+  #main{
+    padding-top: 0%;
+  }
+
+  .container_level{
+    margin-top: 10%;
+  }
+}
+
+@media (min-width: 800px) {
+
+  .instrucciones h2, h4{
+    font-size: 18px;
+  }
+}
+
+@media (min-width: 846px) {
+  .container_level{
+    margin-top: 5%;
+  }
+}
+
+@media (min-width: 992px){
+
+  .instrucciones{
+    width: 225px;
+    height: 530px;
+  }
+
+  .container_level {
+  }
+
+  #main{
+    padding-top: 0%;
+  }
+}
+
+@media (min-width: 1050px){
+
+  #main{
+    padding-top: 0%;
+  }
+}
+
+
+@media (min-width: 1200px) {
+   .instrucciones{
+     width: 250px;
+   }
+
+   #main{
+     padding-top: 0%
+   }
+ }
+
+ @media (min-width: 1500px) {
+    .instrucciones{
+      height: 550px;
+    }
+
+    #main{
+      padding-top: 0%
+    }
+  }
+
+  .seleccionar-modo {
+    margin-top: 5%;
+    margin-bottom: 5%;
+  }
+
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+
+
+@font-face {
+    font-family: myFirstFont;
+    src: url(GOTHIC.TTF);
+}
+
+@font-face {
+	font-family: GothicBI;
+	src: url(GOTHICBI.TTF);
+}
+
+@font-face {
+    font-family: Florencesans;
+    src: url(florencesans.ttf);
+}
+
 
 html {
     height: 100%;
@@ -10,6 +147,11 @@ html {
 
 body {
     height: 100%;
+    background-image:url(../images/back.png);
+    background-repeat:no-repeat;
+    background-size:100% 100%;
+    background-attachment:fixed;
+    font-family:"myFirstFont", sans-serif;
 }
 
 .container {
@@ -20,38 +162,73 @@ body {
 }
 
 #main {
-    height: 92%;
+    font-family:"myFirstFont", sans-serif;
 }
 
 #credit {
-    height: 8%;
-    background-color: #4DAF4E;
-    color: white;
+	position: fixed;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+  height: 9%;
+  background-color: #993300;
+  color: white;
+  font-family:"myFirstFont", sans-serif;
+  display: flex;
 }
 
 #credit h4 {
-    margin-top: 0;
+    font-family:"myFirstFont", sans-serif;
 }
 
 #dialog {
+    border-radius: 20px;;
+    z-index: 10;
+    padding: 30px 30px 10px 30px;
+    font-family:"myFirstFont", sans-serif;
 }
 
 #button_login {
-    color: white;
-    background-color: #4DAF4E;
+    font-weight: bold;
+    font-family:"myFirstFont", sans-serif;
 }
 
 #button_register {
-    color: #4DAF4E;
+    text-transform: capitalize;
+    font-weight: bold;
+    color: white;
+    border-radius: 20px;
+    background-color: #993300;
+    font-family:"myFirstFont", sans-serif;
+}
+
+.button_play, .button_multiplayer {
+    color: black;
+    background-image:url(../images/back.png);
+    border: 2px solid #993300;
+    border-radius: 10px;
+    height: 150px;
+    font-size: 25px;
+}
+
+.button_level {
+  color: black;
+  background-image:url(../images/back.png);
+  border: 2px solid #993300;
+  border-radius: 10px;
+  height: 100px;
+  font-size: 30px;
 }
 
 #button_close_modal {
     background-color: white;
-    color: #4DAF4E;
+    color: #993300;
+    font-family:"myFirstFont", sans-serif;
 }
 
 #modal-card-image{
-    margin-bottom:30px;    
+    margin-bottom:30px;
+    font-family:"myFirstFont", sans-serif;
 }
 
 .row {
@@ -60,14 +237,23 @@ body {
 
 .title {
     border-bottom: 1px solid lightgrey;
+    border-radius: 1px;
+    padding: 2%;
+    color: #993300;
+
+}
+
+.main_title {
+  border-bottom: 2px solid #993300;
+  border-radius: 2px;
 }
 
 .primary {
-    color: #4DAF4E !important;
+    color: #993300 !important;
 }
 
 .primary_background {
-    background-color: #4DAF4E !important;
+    background-color: #993300 !important;
 }
 
 .navbar-brand {
@@ -91,6 +277,7 @@ body {
  */
 table {
     width:100%;
+    font-family:"myFirstFont", sans-serif;
 }
  table > thead > tr > th {
      border-bottom: 2px solid #E0E0E0;
@@ -98,8 +285,202 @@ table {
      text-align: left;
      padding-bottom: 25px;
      padding-top: 10px;
+     font-family:"myFirstFont", sans-serif;
  }
 
- .current_user {
+div{
+	font-family:"myFirstFont", sans-serif;
+}
+
+a{
+	font-family:"myFirstFont", sans-serif;
+}
+
+p{
+	font-family:"myFirstFont", sans-serif;
+}
+
+.gothic{
+	font-family:"myFirstFont", sans-serif;
+	font-weight:bold;
+}
+
+.titulo {
+	font-family:"Florencesans", sans-serif;
+	font-weight:bold;
+}
+
+.current_user {
      background-color:#D0D0D0;
- }
+}
+
+.redondeado{
+	border-radius: 20px !important;
+}
+
+.recuadro {
+    padding: 2.5%;
+}
+
+.col-centered{
+    float: none;
+    margin: 0 auto;
+}
+
+.recuadro-blanco {
+  background-color: white;
+  padding: 1%;
+  /*margin-bottom: 1%;*/
+  box-shadow: 7px 7px 5px rgba(0,0,0,0.2);
+}
+
+#bottom {
+    position: fixed;
+    left:0px;
+    right:0px;
+    bottom: 0px;
+    margin-bottom: 0px;
+    background-color: #993300;
+}
+
+#landing {
+    display: table-cell;
+    width: 100%;
+    vertical-align: middle;
+    text-align: center;
+}
+
+#landing h1 {
+    font-size: 400%;
+    margin-bottom: 15px;
+    font-family:"Florencesans", sans-serif;
+}
+
+#landing p {
+    font-size: 200%;
+    margin-bottom: 60px;
+    font-family:"Florencesans", sans-serif;
+}
+
+#instructions {
+    display: table-cell;
+    width: 75%;
+    margin-left: 25%;
+    vertical-align: middle;
+    text-align: center;
+}
+
+#instructions h1 {
+    font-size: 220%;
+    font-style: italic;
+    margin-bottom: 15px;
+    font-family:"Florencesans", sans-serif;
+}
+
+#instructions p {
+    font-size: 140%;
+    margin: 1em;
+    line-height: 1;
+    font-family:"Florencesans", sans-serif;
+}
+
+#greeting {
+    display: table-cell;
+    width: 100%;
+    vertical-align: middle;
+    text-align: center;
+}
+
+#greeting p {
+    font-size: 140%;
+    margin: 1em;
+    line-height: 1;
+    font-family:"Florencesans", sans-serif;
+}
+
+.greetings-logos {
+    margin-bottom: 10%;
+}
+
+.enfasis {
+    font-weight: bold;
+    font-style: italic;
+    font-size: 110%;
+}
+
+.textAlert
+{
+  text-align: center;
+}
+
+.derechos-footer {
+  text-align: center;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.centered{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+/*
+  Se encargará de centrar los cuadros redondeados solamente en altura.
+*/
+
+.instrucciones{
+
+}
+
+.instrucciones h2{
+  /* Color del interliniado. */
+  border-bottom: 4px solid #993300;
+  border-radius: 4px;
+}
+
+.instrucciones h4{
+  /* Color del interliniado. */
+  border-bottom: 2px solid #993300;
+  border-radius: 2px;
+}
+
+  /* Color del interliniado. */
+  border-bottom: 2px solid #993300;
+  border-radius: 2px;
+}
+
+.instrucciones p{
+  text-align: justify;
+  margin: 12px 10px 10px;
+}
+
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+/*
+  Estilos correspondiente al modal. De esta forma se obtiene el comportamiento
+  correspondiente.
+*/
+
+.modal {
+    display: none; /* Oculto por defecto */
+    position: fixed; /* Se mantiene en el lugar */
+    z-index: 1; /* Se ubica en lo más alto */
+    left: 0;
+    top: 0;
+    overflow: auto; /* Se habilita el scroll si es necesario */
+    background-color: rgba(0,0,0,0.4); /* Negro con opacidad */
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    -webkit-border-radius: 10px !important;
+    -moz-border-radius: 10px !important;
+    border-radius: 10px !important;
+}
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */

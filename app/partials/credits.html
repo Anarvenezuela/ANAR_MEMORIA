@@ -1,0 +1,105 @@
+<link rel="stylesheet" href="styles/credits.css">
+<div class="primary_background navbar navbar-default ">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" ng-init="isCollapsed = true" ng-click="isCollapsed = !isCollapsed">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        </button>
+        <a href="#" class="navbar-brand" ng-click="changePage('profile')">
+            <i class="mdi-navigation-arrow-back navbar-icon"></i>
+        </a>
+        <a class="navbar-brand">Créditos</a>
+    </div>
+    <div class="navbar-collapse" ng-class="{collapse: isCollapsed}">
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                <a title="Tu colección de cartas"
+                   href="#" ng-click="changePage('collection')">
+                    <i class="mdi-content-content-copy navbar-icon"></i>
+                    Tus Cartas
+                </a>
+            </li>
+            <li>
+                <a title="Puntuaciones más altas"
+                   href="#" ng-click="changePage('highscores')">
+                    <i class="mdi-editor-insert-chart navbar-icon"></i>
+                    Puntuajes
+                </a>
+            </li>
+            <li>
+                <a title="Créditos"
+                   href="#" ng-click="changePage('credits')">
+                    <i class="mdi-action-receipt navbar-icon"></i>
+                    Créditos
+                </a>
+            </li>
+            <li>
+                <a title="Salir"
+                   href="#" ng-click="logOut()">
+                    <i class="mdi-action-exit-to-app navbar-icon"></i>
+                    Salir
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div id="creditos">
+<h3 id="titulo">Créditos</h3>
+<table>
+	<tr>
+		<td class="left-cell">
+			<p><b>Concepto</b></p>
+			<p><b>Diseño</b></p>
+			<p><b>Figuras en línea</b></p>
+			<p><b>Figuras en bajorelieve</b></p>
+			<p><b>Textos</b></p>
+		</td>
+		<td class="right-cell" style="vertical-align: middle;">RUBY De VALENCIA</td>
+	</tr>
+	<tr>
+		<td class="left-cell">
+			<b>Fotografías</b>
+		</td>
+		<td class="right-cell">Colección ANAR</td>
+	</tr>
+	<tr>
+		<td class="left-cell">
+			<p><b>Desarrollo de la Aplicación</b></p>
+			<p style="font-size: 85%">Estudiantes Ing. en Computación</p>
+			<p style="font-size: 85%">e Ing. en Telecomunicaciones (USB)</p>
+			<p style="font-style: italic">Modo Solitario</p>
+		</td>
+		<td class="right-cell">
+			<p>ALFREDO FANGHELLA</p>
+			<p>ARIANNA AMAYA</p>
+			<p>ALBERTO COLS</p>
+			<p>DANIEL MALLCOTT</p>
+		</td>
+	</tr>
+	<tr>
+		<td class="left-cell">
+			<p style="font-style: italic">Modo Multijugador</p>
+      <p><b>Documentación y Manuales</b></p>
+		</td>
+		<td class="right-cell">
+			<p>EDWARD FERNÁNDEZ</p>
+			<p>LEONARDO MARTÍNEZ</p>
+		</td>
+	</tr>
+	<tr>
+		<td class="left-cell">
+			<b>Tutoría</b>
+		</td>
+		<td class="right-cell">ANGELA Di SERIO</td>
+	</tr>
+	<tr>
+		<td class="left-cell">
+			<b>Coordinación General</b>
+		</td>
+		<td class="right-cell">RUBY De VALENCIA</td>
+	</tr>
+</table>
+<p>Caracas, 2016</p>
+</div>

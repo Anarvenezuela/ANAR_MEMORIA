@@ -1,90 +1,102 @@
 <link rel="stylesheet" href="styles/game.css">
+<link rel="stylesheet" href="styles/invisible.css">
 
 <div class="primary_background navbar navbar-default ">
     <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
+        <button type="button" class="navbar-toggle" ng-init="isCollapsed = true" ng-click="isCollapsed = !isCollapsed">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
         </button>
         <a href="#" class="navbar-brand" ng-click="changePage('home')">
             <i class="mdi-navigation-arrow-back navbar-icon"></i>
         </a>
         <a class="navbar-brand">{{level.name}}</a>
     </div>
-    <div class="navbar-collapse collapse navbar-responsive-collapse">
+    <div class="navbar-collapse" ng-class="{collapse: isCollapsed}">
         <ul class="nav navbar-nav navbar-right">
             <li>
                 <a href="#" ng-click="restartGame()">
                     <i class="mdi-action-autorenew navbar-icon"></i>
+                    Reiniciar Juego
                 </a>
             </li>
         </ul>
     </div>
 </div>
-<div id="board">
-    <div class="well page">
-        <div id="game_screen">
+        <div id="invisible" ng-click="quitarZoom()">
+            <div id="invisible_interno">
+                <img ng-src="{{zoom}}"/>
+            </div>
+        </div>
+<div class="recuadro">
+        <div id="game_screen" class="well page redondeado">
             <div ng-repeat="i in [] | range: cards.length / 5">
                 <div class="row"  ng-class="{'last':$last}">
                     <div class="col-md-1"></div>
-                    <div  class="col-xs-6 col-md-2" ng-repeat="j in array" ng-click="showCard(cards[i*5 + j])">
-                        <img class="{{cards[i*5 + j]._id}} card" ng-src="{{cards[i*5 + j].imageShown}}"/>
+                    <div  class="col-xs-6 col-md-2" ng-repeat="j in array">
+                        <div style="position: relative; left: 0; top: 0;">
+                            <div ng-click="showCard(cards[i*5 + j])">
+                                <img class="{{cards[i*5 + j]._id}} card" ng-src="{{cards[i*5 + j].imageShown}}"/>
+                            </div>
+                            <div ng-if="conLupa">
+                                <div ng-click="hacerZoom(cards[i*5 + j])">
+                                    <img class="lupa" id="{{cards[i*5+j].position}}" src="images/lupa.png"/>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="col-md-1"></div>
                 </div>
             </div>
         </div>
-
-        <div id="win_screen" style="display: none">
+</div>
+<div class="recuadro" style="margin-left: 15%; margin-right: 15%; margin-top:-5%;">
+        <div id="win_screen" class="well page redondeado" style="display: none;">
             <div class="row">
                 <div class="col-md-3">
-                    <img src="images/win-left.png" width="100%" height="100%">
+                    <img src="images/inicio-der1.png" style="width:55%; margin-top:55%">
                 </div>
                 <div class="col-md-6">
-                    <h1>¡GANASTE!</h1>
-                    <h2>Haz ganado {{score}} puntos</h2>
-                    <br><br>
-                    <button id="button_confirm" ng-click="changePage('home')" class="btn">
+                    <h1 class="gothic">¡GANASTE!</h1>
+                    <h3 class="gothic">Has ganado {{score}} puntos</h3>
+                    <button id="button_confirm" ng-click="changePage('home')" class="btn gothic">
                         Continuar
                         <div class="ripple-wrapper"></div>
                     </button>
+                    <h3 class="gothic">Desbloqueaste esta carta</h3>
+					<div class="col-md-3"></div>
+                    <div class="col-md-6">
+                        <img height="120%" width="120%" ng-src="{{obtainedCard.image}}" style="margin-left:-10%">
+                        <p class="gothic">{{obtainedCard.name}}</p>
+                    </div>
+                    <div class="col-md-3"></div>
                 </div>
                 <div class="col-md-3">
-                    <img src="images/win-right.png" width="100%" height="100%">
+                    <img src="images/inicio-izq1.png" style="width:60%; margin-top:60%">
                 </div>
-            </div>
-
-            <h2>Has desbloqueado esta carta</h2>
-            <br>
-            <div class="row">
-                <div class="col-md-4"></div>
-                <div class="col-md-4">
-                    <div class="panel panel-default">
-                    <div class="panel-body">
-                        <img height="100%" width="100%" ng-src="{{obtainedCard.image}}">
-                    </div>
-                    <div class="panel-footer">{{obtainedCard.name}}</div>
-                </div>
-                <div class="col-md-4"></div>
             </div>
         </div>
 
-        <div id="loser_screen" class="row" style="display: none">
-            <div class="col-md-3">
-                <img src="images/win-left.png" width="100%" height="100%">
-            </div>
-            <div class="col-md-6">
-                <h1>PERDISTE</h1>
-                <h2>Se te acabo el tiempo</h2>
-                <br><br>
-                <h3>¡Intentalo de nuevo!</h3>
-                <i href="#" class="mdi-action-autorenew navbar-icon" ng-click="restartGame()"></i>
-            </div>
-            <div class="col-md-3">
-                <img src="images/win-right.png" width="100%" height="100%">
-            </div>
+        <div id="loser_screen" class="well page redondeado" style="display: none">
+    			<div class="row">
+    				<div class="col-md-3">
+    					<img src="images/inicio-der1.png" style="width: 55%; margin-top:30%">
+    				</div>
+    				<div class="col-md-6 text-center">
+              <br>
+    					<h3 class="gothic">Se acabó el tiempo</h3>
+    					<h1 class="gothic">¡Intentalo de nuevo!</h1>
+    					<i href="#" class="mdi-action-autorenew navbar-icon" ng-click="restartGame()"></i>
+    				</div>
+    				<div class="col-md-3">
+    					<img src="images/inicio-izq1.png" style="width: 60%; margin-top:30%">
+    				</div>
+    			</div>
         </div>
-    </div>
 </div>
-<div id="timer" class="circle">{{counter}}</div>
+<div id="obtenidas"></div>
+<div id="timer" class="circle">
+    <img src="images/reloj.gif" style="margin: 0">
+    {{counter}}
+</div>

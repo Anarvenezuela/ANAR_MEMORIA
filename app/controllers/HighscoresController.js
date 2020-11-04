@@ -2,10 +2,15 @@
 
 app.controller('HighscoresController', function ($scope) {
     DBGetHighscores(function (err, response) {
-      if (err)
+        if (err)
             return;
-        
-      $scope.users = response.rows;
-      $scope.$apply();
+      
+        if (response.rows.length <= 25) {
+            $scope.users = response.rows;
+        }
+        else {
+            $scope.users = response.rows.slice(0,25);
+        }
+        $scope.$apply();
     });
 });

@@ -1,0 +1,26 @@
+{
+  "name": "anar-memoria",
+  "homepage": "https://github.com/SC-ANAR/ANAR_MEMORIA",
+  "authors": [
+    "ANAR"
+  ],
+  "description": "Juego de memoria para el Archivo Nacional de Arte Rupestre",
+  "main": "index.html",
+  "moduleType": [],
+  "license": "Fundabitat 2015 - Todos los derechos reservados",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-route": "~1.3.11",
+    "angular": "~1.3.11",
+    "bootstrap-material-design": "*",
+    "pouchdb": "~3.2.1",
+    "socket.io-client" : "latest"
+  }
+}

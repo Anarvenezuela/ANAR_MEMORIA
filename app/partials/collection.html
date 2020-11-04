@@ -1,30 +1,43 @@
 <div class="primary_background navbar navbar-default ">
     <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+        <button type="button" class="navbar-toggle" ng-init="isCollapsed = true" ng-click="isCollapsed = !isCollapsed">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         </button>
-        <a href="#" class="navbar-brand" ng-click="changePage('home')">
+        <a href="#" class="navbar-brand" ng-click="changePage('profile')">
             <i class="mdi-navigation-arrow-back navbar-icon"></i>
         </a>
         <a class="navbar-brand">Tu Colección de Cartas</a>
     </div>
-    <div class="navbar-collapse collapse navbar-responsive-collapse">
+    <div class="navbar-collapse" ng-class="{collapse: isCollapsed}">
         <ul class="nav navbar-nav navbar-right">
             <li>
-                <a href="#" ng-click="changePage('collection')">
+                <a title="Tu colección de cartas"
+                   href="#" ng-click="changePage('collection')">
                     <i class="mdi-content-content-copy navbar-icon"></i>
+                    Tus Cartas
                 </a>
             </li>
             <li>
-                <a href="#" ng-click="changePage('highscores')">
+                <a title="Puntuaciones más altas"
+                   href="#" ng-click="changePage('highscores')">
                     <i class="mdi-editor-insert-chart navbar-icon"></i>
+                    Puntuajes
                 </a>
             </li>
             <li>
-                <a href="#" ng-click="logOut()">
+                <a title="Créditos"
+                   href="#" ng-click="changePage('credits')">
+                    <i class="mdi-action-receipt navbar-icon"></i>
+                    Créditos
+                </a>
+            </li>
+            <li>
+                <a title="Salir"
+                   href="#" ng-click="logOut()">
                     <i class="mdi-action-exit-to-app navbar-icon"></i>
+                    Salir
                 </a>
             </li>
         </ul>
@@ -69,13 +82,13 @@
 
 
 <div id="modal" class="modal" style="display: none;">
-    <div class="modal-dialog" style="height:100%; width: 30%;">
+    <div class="modal-dialog" style="height:100%; width: 60%;">
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title">{{card.name}}</h4>
             </div>
             <div class="modal-body" style="text-align:center">
-                <img class="modal-image" id="modal-card-image" ng-src="{{card.image}}" height="80%" width="80%">
+                <img class="modal-image" id="modal-card-image" ng-src="{{card.image}}" height="70%" width="70%">
                 <p style="text-align:center">{{card.description}}</p>
             </div>
             <div class="modal-footer">

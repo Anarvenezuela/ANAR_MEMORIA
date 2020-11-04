@@ -4,31 +4,80 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
         <title>ANAR Memoria</title>
-        
+
         <!-- build:css styles/main.css -->
         <link rel="stylesheet" href="styles/bootstrap.min.css">
-        <link rel="stylesheet" href="styles/main.css">
+
         <!-- endbuild -->
 
         <!-- build:css styles/vendor.css -->
         <!-- bower:css -->
-        <link rel="stylesheet" href="../bower_components/bootstrap-material-design/dist/css/material.css" />
-        <link rel="stylesheet" href="../bower_components/bootstrap-material-design/dist/css/ripples.css" />
+        <link rel="stylesheet" href="bower_components/bootstrap-material-design/dist/css/material.css" />
+        <link rel="stylesheet" href="bower_components/bootstrap-material-design/dist/css/ripples.css" />
+        <link rel="stylesheet" href="styles/main.css">
         <!-- endbower -->
         <!-- endbuild -->
     </head>
     <body ng-switch="page" ng-controller="PageController">
 
         <!--                -->
+        <!--     Landing    -->
+        <!--                -->
+
+        <div style="height: 100%" ng-switch-default>
+            <div style="height: 100%" ng-include=" ' partials/landing.html ' "></div>
+        </div>
+
+        <!--                -->
+        <!--     Greeting   -->
+        <!--                -->
+
+        <div style="height: 100%" ng-switch-when="greeting">
+            <div style="height: 100%" ng-include=" ' partials/greeting.html ' "></div>
+        </div>
+
+        <!--                -->
+        <!--  Instructions  -->
+        <!--                -->
+
+        <div style="height: 100%" ng-switch-when="instructions">
+            <div style="height: 100%" ng-include=" ' partials/instructions.html ' "></div>
+        </div>
+
+        <!--                -->
         <!-- Authentication -->
         <!--                -->
 
-        <div style="height: 100%" ng-switch-default ng-controller="AuthController">
+        <div style="height: 100%" ng-switch-when="auth" ng-controller="AuthController">
             <div style="height: 100%" ng-include=" ' partials/auth.html ' "></div>
         </div>
 
         <!--                -->
-        <!--      Home      -->
+        <!--     Profile    -->
+        <!--                -->
+
+        <div style="height: 100%" ng-switch-when="profile" ng-controller="ProfileController">
+            <div style="height: 100%" ng-include=" ' partials/profile.html ' "></div>
+        </div>
+
+        <!--                    -->
+        <!-- Multiplayer Level  -->
+        <!--                    -->
+
+        <div style="height: 100%" ng-switch-when="multiplayer-level" ng-controller="MultiplayerLevelController">
+            <div style="height: 100%" ng-include=" ' partials/multiplayerLevel.html ' "></div>
+        </div>
+
+        <!--               -->
+        <!-- Multiplayer   -->
+        <!--               -->
+
+        <div style="height: 100%" ng-switch-when="multiplayer" ng-controller="MultiplayerGameController">
+            <div style="height: 100%" ng-include=" ' partials/multiplayerGame.html ' "></div>
+        </div>
+
+        <!--                -->
+        <!--     Home       -->
         <!--                -->
 
         <div style="height: 100%" ng-switch-when="home" ng-controller="HomeController">
@@ -57,8 +106,15 @@
 
         <div style="height: 100%" ng-switch-when="highscores" ng-controller="HighscoresController">
             <div style="height: 100%" ng-include=" ' partials/highscores.html ' "></div>
-        </div>  
-        
+        </div>
+
+		<!--                -->
+        <!--   Credits      -->
+        <!--                -->
+
+        <div style="height: 100%" ng-switch-when="credits">
+            <div style="height: 100%" ng-include=" ' partials/credits.html ' "></div>
+        </div>
 
         <!-- build:js scripts/vendor.js -->
         <!-- bower:js -->
@@ -67,21 +123,29 @@
         <script src="scripts/vendor/pouchdb.min.js"></script>
         <script src="scripts/vendor/pouchdb.quick-search.min.js"></script>
         <script src="scripts/vendor/jquery.min.js"></script>
-        <script src="../bower_components/bootstrap-material-design/dist/js/material.js"></script>
-        <script src="../bower_components/bootstrap-material-design/dist/js/ripples.js"></script>
+        <script src="bower_components/bootstrap-material-design/dist/js/material.js"></script>
+        <script src="bower_components/bootstrap-material-design/dist/js/ripples.js"></script>
+        <script src="/bower_components/socket.io-client/socket.io.js"></script>
+        <!-- <script src="/bower_components/angular-ui-bootstrap/index.js"></script> -->
+        <script src="bower_components/angular-animate/angular-animate.js"></script>
+
         <!-- endbower -->
         <!-- endbuild -->
         <!-- build:js scripts/index.js -->
         <script src="scripts/index.js"></script>
         <script src="database/database.js"></script>
         <script src="scripts/app.js"></script>
+        <script src="scripts/DatosCuriosos.js"></script>
         <!-- endbuild -->
         <!-- Controllers -->
         <script src="controllers/PageController.js"></script>
         <script src="controllers/AuthController.js"></script>
+        <script src="controllers/ProfileController.js"></script>
+        <script src="controllers/MultiplayerLevelController.js"></script>
+        <script src="controllers/MultiplayerGameController.js"></script>
         <script src="controllers/HomeController.js"></script>
         <script src="controllers/GameController.js"></script>
         <script src="controllers/CollectionController.js"></script>
         <script src="controllers/HighscoresController.js"></script>
-    </body>
+        </body>
 </html>

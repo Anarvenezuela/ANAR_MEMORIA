@@ -1,7 +1,7 @@
 'use strict';
 
 app.controller('CollectionController', function ($scope) {
-    
+
     $scope.cards = [];
     $scope.unlockedCards = [];
 
@@ -16,9 +16,8 @@ app.controller('CollectionController', function ($scope) {
                 });
 
       $scope.$apply();
-    });
 
-    /* 
+    /*
      * Then we get all the cards and place them on the view.
      * This will take into consideration if the level has been unlocked or not.
      */
@@ -29,12 +28,12 @@ app.controller('CollectionController', function ($scope) {
         var cards = [];
         var difficulties = [];
 
-        // We loop through the whole set of cards adding each one to the result 
+        // We loop through the whole set of cards adding each one to the result
         // array.
         for (var i = 0; i < result.rows.length; i++) {
             var level = result.rows[i].doc
 
-            // If the card hasn't been obtained by the user, change the image to 
+            // If the card hasn't been obtained by the user, change the image to
             // blocked. The obtained attribute is used to check at the view if
             // the user has the card
             if (!$scope.unlockedCards.contains(level)) {
@@ -50,6 +49,7 @@ app.controller('CollectionController', function ($scope) {
         // Then we fill the cards array with actual cards
         $scope.cards = cards;
         $scope.$apply();
+    });
     });
 
     /*
@@ -68,12 +68,12 @@ app.controller('CollectionController', function ($scope) {
     $scope.showCard = function(card) {
         $scope.card = card;
         document.getElementById("modal").style.display="block";
-        
+
     }
 
     $scope.hideCard = function() {
         $scope.card = {};
         document.getElementById("modal").style.display="none";
-        
+
     }
 });

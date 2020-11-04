@@ -1,0 +1,94 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/bin/nodejs',
+1 verbose cli   '/usr/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   '--save',
+1 verbose cli   'bower-requirejs',
+1 verbose cli   '.' ]
+2 info using npm@3.8.6
+3 info using node@v4.4.2
+4 verbose config Skipping project config: /home/edward/.npmrc. (matches userconfig)
+5 silly loadCurrentTree Starting
+6 silly install loadCurrentTree
+7 silly install readLocalPackageData
+8 silly fetchPackageMetaData bower-requirejs
+9 silly fetchPackageMetaData .
+10 silly fetchNamedPackageData bower-requirejs
+11 silly mapToRegistry name bower-requirejs
+12 silly mapToRegistry using default registry
+13 silly mapToRegistry registry https://registry.npmjs.org/
+14 silly mapToRegistry data Result {
+14 silly mapToRegistry   raw: 'bower-requirejs',
+14 silly mapToRegistry   scope: null,
+14 silly mapToRegistry   name: 'bower-requirejs',
+14 silly mapToRegistry   rawSpec: '',
+14 silly mapToRegistry   spec: 'latest',
+14 silly mapToRegistry   type: 'tag' }
+15 silly mapToRegistry uri https://registry.npmjs.org/bower-requirejs
+16 silly fetchOtherPackageData .
+17 silly cache add args [ '.', null ]
+18 verbose cache add spec .
+19 silly cache add parsed spec Result {
+19 silly cache add   raw: '.',
+19 silly cache add   scope: null,
+19 silly cache add   name: null,
+19 silly cache add   rawSpec: '.',
+19 silly cache add   spec: '/home/edward/Escritorio/ANAR/app',
+19 silly cache add   type: 'local' }
+20 verbose request uri https://registry.npmjs.org/bower-requirejs
+21 verbose request no auth needed
+22 info attempt registry request try #1 at 12:46:27
+23 verbose request id 0cdc9f8b9ddae27c
+24 verbose etag "5C6AFHS9VGBS0401WBPG6HTKN"
+25 http request GET https://registry.npmjs.org/bower-requirejs
+26 error addLocal Could not install /home/edward/Escritorio/ANAR/app
+27 silly fetchPackageMetaData Error: EISDIR: illegal operation on a directory, read
+27 silly fetchPackageMetaData     at Error (native)
+27 silly fetchPackageMetaData  error for . { [Error: EISDIR: illegal operation on a directory, read] errno: -21, code: 'EISDIR', syscall: 'read' }
+28 http 304 https://registry.npmjs.org/bower-requirejs
+29 verbose headers { date: 'Thu, 14 Jul 2016 16:46:32 GMT',
+29 verbose headers   via: '1.1 varnish',
+29 verbose headers   'cache-control': 'max-age=300',
+29 verbose headers   etag: '"5C6AFHS9VGBS0401WBPG6HTKN"',
+29 verbose headers   age: '0',
+29 verbose headers   connection: 'keep-alive',
+29 verbose headers   'x-served-by': 'cache-iad2624-IAD',
+29 verbose headers   'x-cache': 'HIT',
+29 verbose headers   'x-cache-hits': '1',
+29 verbose headers   'x-timer': 'S1468514792.406888,VS0,VE21',
+29 verbose headers   vary: 'Accept-Encoding' }
+30 silly get cb [ 304,
+30 silly get   { date: 'Thu, 14 Jul 2016 16:46:32 GMT',
+30 silly get     via: '1.1 varnish',
+30 silly get     'cache-control': 'max-age=300',
+30 silly get     etag: '"5C6AFHS9VGBS0401WBPG6HTKN"',
+30 silly get     age: '0',
+30 silly get     connection: 'keep-alive',
+30 silly get     'x-served-by': 'cache-iad2624-IAD',
+30 silly get     'x-cache': 'HIT',
+30 silly get     'x-cache-hits': '1',
+30 silly get     'x-timer': 'S1468514792.406888,VS0,VE21',
+30 silly get     vary: 'Accept-Encoding' } ]
+31 verbose etag https://registry.npmjs.org/bower-requirejs from cache
+32 verbose get saving bower-requirejs to /home/edward/.npm/registry.npmjs.org/bower-requirejs/.cache.json
+33 verbose correctMkdir /home/edward/.npm correctMkdir not in flight; initializing
+34 silly rollbackFailedOptional Starting
+35 silly rollbackFailedOptional Finishing
+36 silly runTopLevelLifecycles Starting
+37 silly runTopLevelLifecycles Finishing
+38 silly install printInstalled
+39 verbose stack Error: EISDIR: illegal operation on a directory, read
+39 verbose stack     at Error (native)
+40 verbose cwd /home/edward/Escritorio/ANAR/app
+41 error Linux 4.2.0-16-generic
+42 error argv "/usr/bin/nodejs" "/usr/bin/npm" "install" "--save" "bower-requirejs" "."
+43 error node v4.4.2
+44 error npm  v3.8.6
+45 error code EISDIR
+46 error errno -21
+47 error syscall read
+48 error eisdir EISDIR: illegal operation on a directory, read
+49 error eisdir This is most likely not a problem with npm itself
+49 error eisdir and is related to npm not being able to find a package.json in
+49 error eisdir a package you are trying to install.
+50 verbose exit [ -21, true ]

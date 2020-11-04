@@ -1,0 +1,49 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/bin/nodejs',
+1 verbose cli   '/usr/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   'angular-ui-bootstrap',
+1 verbose cli   '.' ]
+2 info using npm@3.8.6
+3 info using node@v4.4.2
+4 verbose config Skipping project config: /home/edward/.npmrc. (matches userconfig)
+5 silly loadCurrentTree Starting
+6 silly install loadCurrentTree
+7 silly install readLocalPackageData
+8 silly fetchPackageMetaData angular-ui-bootstrap
+9 silly fetchPackageMetaData .
+10 silly fetchDirectoryPackageData angular-ui-bootstrap
+11 silly fetchOtherPackageData .
+12 silly cache add args [ '.', null ]
+13 verbose cache add spec .
+14 silly cache add parsed spec Result {
+14 silly cache add   raw: '.',
+14 silly cache add   scope: null,
+14 silly cache add   name: null,
+14 silly cache add   rawSpec: '.',
+14 silly cache add   spec: '/home/edward/Escritorio/ANAR/app/bower_components',
+14 silly cache add   type: 'local' }
+15 error addLocal Could not install /home/edward/Escritorio/ANAR/app/bower_components
+16 silly fetchPackageMetaData Error: EISDIR: illegal operation on a directory, read
+16 silly fetchPackageMetaData     at Error (native)
+16 silly fetchPackageMetaData  error for . { [Error: EISDIR: illegal operation on a directory, read] errno: -21, code: 'EISDIR', syscall: 'read' }
+17 silly rollbackFailedOptional Starting
+18 silly rollbackFailedOptional Finishing
+19 silly runTopLevelLifecycles Starting
+20 silly runTopLevelLifecycles Finishing
+21 silly install printInstalled
+22 verbose stack Error: EISDIR: illegal operation on a directory, read
+22 verbose stack     at Error (native)
+23 verbose cwd /home/edward/Escritorio/ANAR/app/bower_components
+24 error Linux 4.2.0-16-generic
+25 error argv "/usr/bin/nodejs" "/usr/bin/npm" "install" "angular-ui-bootstrap" "."
+26 error node v4.4.2
+27 error npm  v3.8.6
+28 error code EISDIR
+29 error errno -21
+30 error syscall read
+31 error eisdir EISDIR: illegal operation on a directory, read
+32 error eisdir This is most likely not a problem with npm itself
+32 error eisdir and is related to npm not being able to find a package.json in
+32 error eisdir a package you are trying to install.
+33 verbose exit [ -21, true ]

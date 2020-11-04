@@ -1,0 +1,108 @@
+<div class="primary_background navbar navbar-default ">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" ng-init="isCollapsed = true" ng-click="isCollapsed = !isCollapsed">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        </button>
+        <a href="#" class="navbar-brand" ng-click="changePage('profile')">
+            <i class="mdi-navigation-arrow-back navbar-icon"></i>
+        </a>
+        <a class="navbar-brand">Seleccionar Dificultad</a>
+    </div>
+    <div class="navbar-collapse" ng-class="{collapse: isCollapsed}">
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                <a title="Tu colección de cartas"
+                   href="#" ng-click="changePage('collection')">
+                    <i class="mdi-content-content-copy navbar-icon"></i>
+                    Tus Cartas
+                </a>
+            </li>
+            <li>
+                <a title="Puntuaciones más altas"
+                   href="#" ng-click="changePage('highscores')">
+                    <i class="mdi-editor-insert-chart navbar-icon"></i>
+                    Puntuajes
+                </a>
+            </li>
+            <li>
+                <a title="Créditos"
+                   href="#" ng-click="changePage('credits')">
+                    <i class="mdi-action-receipt navbar-icon"></i>
+                    Créditos
+                </a>
+            </li>
+            <li>
+                <a title="Salir"
+                   href="#" ng-click="logOut()">
+                    <i class="mdi-action-exit-to-app navbar-icon"></i>
+                    Salir
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+
+<div id="main" class="row">
+      <!-- ................................................................... -->
+      <!-- SELECCIÓN DE NIVELES -->
+      <div class="col-xs-6 col-xs-offset-3
+                  col-sm-6 col-sm-offset-2 col-sm-push-3
+                  col-md-6 col-md-offset-1
+                  col-lg-5 col-md-offset-1
+                  container_level recuadro-blanco redondeado">
+        <span ng-repeat="level in difficulty">
+        <button type="button" class="btn btn-block button_level" ng-click="startMultiplayerGame(level)"> {{level}} </button>
+        </span>
+      </div>
+
+    <!-- ................................................................... -->
+    <!-- CUADRO DE INSTRUCCIONES -->
+    <div class="col-xs-6 col-xs-offset-3
+                col-sm-3 col-sm-offset-1 col-sm-pull-8
+                col-md-3 col-md-offset-1 col-md-pull-7
+                col-lg-2 col-lg-offset-1 col-lg-pull-6
+                recuadro-blanco redondeado instrucciones">
+        <h2 class="title text-center gothic primary">Instrucciones</h2>
+        <h4 class="title text-left gothic primary">Niveles:</h4>
+        <h5 class="subtitle text-center gothic">
+          <p> Para comenzar a jugar debes elegir alguno de los niveles mostrados: Facil, Medio y Dificil.</p>
+          <p> Si deseas enfrentarte a oponentes más fuertes debes superar los niveles Facil, Intermedio y Medio en Solitario.</p>
+          <p class="primary">¡Juega, diviertete y aprende!<p>
+        </h5><br>
+        <h4 class="title text-left gothic primary">Puntuación:</h4>
+        <h5 class="subtitle text-center gothic">
+          <p> Si ganas la partida se te otorgará 50 puntos mas 10 puntos por cada carta obtenida.</p>
+          <p> Si pierdes se te otorgarán 25 puntos por intentarlo.</p>
+          <h5 class="text-center gothic" style="color: #993300;"> ¡El jugador que crea la partida será el primero en jugar!</h5>
+        </h5><br>
+    </div>
+
+
+    <!-- ................................................................... -->
+    <!-- ALERTA DIALOGO MODAL -->
+    <div id="alerts" class="modal fade" style="display: none; border-radius: 25px;">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div miv class="modal-header" style="color: black; text-align: center;">
+            <h4 class="modal-title gothic" style="color: #993300;">¡Atención!</h4>
+          </div>
+          <div class="modal-body" style="color: black;">
+            <p class="gothic">{{textAlert}}</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary gothic" data-dismiss="modal" style="background-color: #993300;"
+                    ng-click="closeAlert()">
+              Aceptar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ................................................................... -->
+</div>
+<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->

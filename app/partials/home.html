@@ -1,51 +1,86 @@
+<link rel="stylesheet" href="styles/invisible.css">
+
 <div class="primary_background navbar navbar-default ">
     <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+        <button type="button" class="navbar-toggle" ng-init="isCollapsed = true" ng-click="isCollapsed = !isCollapsed">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         </button>
+        <a href="#" class="navbar-brand" ng-click="changePage('profile')">
+            <i class="mdi-navigation-arrow-back navbar-icon"></i>
+        </a>
         <a class="navbar-brand">Bienvenido, {{user._id}}</a>
     </div>
-    <div class="navbar-collapse collapse navbar-responsive-collapse">
+    <div class="navbar-collapse" ng-class="{collapse: isCollapsed}">
         <ul class="nav navbar-nav navbar-right">
             <li>
-                <a href="#" ng-click="changePage('collection')">
+                <a title="Tu colección de cartas"
+                   href="#" ng-click="changePage('collection')">
                     <i class="mdi-content-content-copy navbar-icon"></i>
+                    Tus Cartas
                 </a>
             </li>
             <li>
-                <a href="#" ng-click="changePage('highscores')">
+                <a title="Puntuaciones más altas"
+                   href="#" ng-click="changePage('highscores')">
                     <i class="mdi-editor-insert-chart navbar-icon"></i>
+                    Puntuajes
                 </a>
             </li>
             <li>
-                <a href="#" ng-click="logOut()">
+                <a title="Créditos"
+                   href="#" ng-click="changePage('credits')">
+                    <i class="mdi-action-receipt navbar-icon"></i>
+                    Créditos
+                </a>
+            </li>
+            <li>
+                <a title="Salir"
+                   href="#" ng-click="logOut()">
                     <i class="mdi-action-exit-to-app navbar-icon"></i>
+                    Salir
                 </a>
             </li>
         </ul>
     </div>
 </div>
 <div ng-repeat="category in levels">
-    <div class="row" style="margin-bottom: 2%">
-        <div class="col-xs-1"></div>
-        <div class="col-xs-10 title">
-            <h4 class="primary">{{category.name}}</h4>
-        </div>
-        <div class="col-xs-1"></div>
-    </div>
-    <div class="row" ng-repeat="i in [] | range: category.levels.length / 5">
-        <div class="col-md-1"></div>
-        <div class="col-xs-6 col-md-2" ng-click="startGame(category.levels[i*5 + j])" ng-repeat="j in array">
-            <div class="panel panel-default">
-                <div class="panel-body">
-                    <img height="100%" width="100%" 
-                    ng-src="images/{{category.levels[i*5 + j].imageName}}">
+
+            <div class="row" style="margin-bottom: 2%">
+                <div class="col-xs-1"></div>
+                <div class="col-xs-10 title">
+                    <h4 class="primary titulo">{{category.name}}</h4>
                 </div>
-                <div class="panel-footer">{{category.levels[i*5 + j].name}}</div>
+                <div class="col-xs-1"></div>
             </div>
-        </div>
-        <div class="col-md-1"></div>
+            <div class="row" ng-repeat="i in [] | range: category.levels.length / 5">
+                <div class="col-md-1"></div>
+                <div class="col-xs-6 col-md-2" ng-click="startGame(category.levels[i*5 + j])" ng-repeat="j in array">
+                    <div class="panel panel-default" style="border-radius:10%">
+                        <div class="panel-body">
+                            <img height="100%" width="100%"
+                            ng-src="images/{{category.levels[i*5 + j].imageName}}">
+                        </div>
+                        <div class="panel-footer">{{category.levels[i*5 + j].name}}</div>
+                    </div>
+                </div>
+
+                <div class="col-md-1">
+					<div style="margin-top:135px; text-align: center;"
+						 ng-if="showHand(category, i)">
+						<img height="45%" width="45%"
+							 ng-src="images/mano-{{chooseHand(category, i)}}.png"
+							ng-click="mostrarDato(category, i)">
+						<p style="font-size: 80%;">dato curioso</p>
+					</div>
+				</div>
+            </div>
+</div>
+
+ <div id="invisible"
+	  ng-click="esconderDato()">
+    <div id="invisible_interno" class="gothic dato">
+        <p ng-bind-html="datoCurioso"></p>
     </div>
-</div>  
+ </div>

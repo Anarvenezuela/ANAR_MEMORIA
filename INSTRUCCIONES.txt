@@ -1,0 +1,80 @@
+-- INSTRUCCIONES PARA JUGAR LA MEMORIA --
+
+# PREPARACIÓN (Siempre se debe realizar estos pasos)
+PASO 1: 
+	Abrir el terminal de la computadora.
+	TIP: se puede utilizar el atajo 'Ctrl' + 'Alt' + t y de inmediato aparecerá 
+		 el terminal.
+
+PASO 2:
+	Escribir en el terminal: "sh actualizar.sh" (sin las comillas dobles)
+
+	Motivos por los que se realiza este paso:
+		+ Actualizar los archivos que componen al proyecto.
+		+ Inicializar el juego sin ninguna dificultad.
+
+# IMPORTANTE:
+# 	Para observar la comunicación en tiempo real se deben abrir dos ventanas/pestañas
+#   en el navegador y realizar los pasos correspondientes a "INICIO DEL JUEGO" 
+#   y "PARA JUGAR EN MULTIJUGADOR".
+
+# INICIO DEL JUEGO.
+PASO 3:
+	Abrir el navegador de su preferencia.
+
+PASO 4:
+	Escribir en la barra de navegación: "http://localhost:8040/" (sin las comillas dobles)
+
+	Al realizar este paso aparecerá en la página de inicio de sesión.
+
+PASO 5:
+	Introducir el nombre de usuario y la contraseña en los campos respectivos.
+
+	# SI NO SE HA CREADO EL USUARIO.
+	PASO 5.1:
+		Presionar el botón "REGISTRAR". De esta forma se creará el usuario
+		deseado.
+
+		NOTAS: 
+			- Si el usuario ya existe aparecerá un mensaje indicando que el 
+			  usuario deseado ya existe.
+			- Cada vez que se desee crear un nuevo usuario se deben llenar los
+			  campos del nombre de usuario y la contraseña. Finalmente se procede
+			  a presionar el botòn de "REGISTRAR".
+
+	# SI YA ESTA CREADO EL USUARIO.
+		Presionar el botón "INGRESAR".
+
+	De esta forma aparecerá en la interfaz respectiva a la información del 
+	usuario.
+
+# PARA JUGAR EN SOLITARIO/CAMPAÑA
+PASO 6:
+	Presionar el botón: "JUGAR".
+
+PASO 7:
+	Presionar la imagen del nivel que se desea jugar. 
+
+	Automáticamente comenzará una nueva partida.
+
+	# SI SE GANA LA PARTIDA.
+	PASO 7.1:
+		Se mostrará la carta ganada. 
+
+		Para continuar se procede a presionar el botón "CONTINUAR".
+
+	# SI SE PIERDE LA PARTIDA.
+	PASO 7.2:
+		Se mostrará la pantalla que indicará que se ha perdido la partida.
+
+		Para volver a intentarlo se debe presionar el botón circular.
+
+# PARA JUGAR EN MULTIJUGADOR.
+PASO 7:
+	Presionar el botón: "MULTIJUGADOR".
+
+PASO 8:
+	Presionar el botón correspondiente al nivel de dificultad en el que se desea
+	jugar (Fácil, Medioy Difícil).
+
+	Aparecerá el "chat" multijugador.

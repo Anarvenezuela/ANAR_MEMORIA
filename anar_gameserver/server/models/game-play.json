@@ -1,0 +1,23 @@
+{
+  "name": "GamePlay",
+  "plural": "GamePlays",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "text": {
+      "type": "string",
+      "required": true,
+      "default": "n"
+    },
+    "from": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

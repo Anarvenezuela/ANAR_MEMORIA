@@ -1,0 +1,39 @@
+{
+  "name": "Game",
+  "plural": "Games",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "difficulty": {
+      "type": "string",
+      "required": true
+    },
+    "available": {
+      "type": "boolean",
+      "required": true,
+      "default": false
+    },
+    "card_set": {
+      "type": "string"
+    },
+    "player1": {
+      "type": "number"
+    },
+    "player2": {
+      "type": "number"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "gamePlays": {
+      "type": "hasMany",
+      "model": "GamePlay",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

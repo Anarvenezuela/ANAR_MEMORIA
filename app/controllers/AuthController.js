@@ -10,7 +10,7 @@ app.controller('AuthController', function($scope) {
 
         DBloginUser(id, password, function(err, response){
             if (err) {
-                console.log(err); 
+                console.log(err);
                 if (err == 401)
                     $scope.errorMessage = "Contraseña incorrecta";
                 else if (err == 404)
@@ -23,7 +23,8 @@ app.controller('AuthController', function($scope) {
             }
 
             $scope.changeUser(response);
-            $scope.changePage('home');  
+            $scope.changePage('profile');
+            $scope.$apply();
         });
     }
 
@@ -34,7 +35,7 @@ app.controller('AuthController', function($scope) {
 
         DBregisterUser(id, password, function(err, response){
             if (err) {
-                console.log(err); 
+                console.log(err);
                 if (err == 409)
                     $scope.errorMessage = "El usuario ya existe";
                 else if (err == 404)
@@ -42,12 +43,13 @@ app.controller('AuthController', function($scope) {
                 else
                     $scope.errorMessage = err;
                 $scope.showErrorMessage();
-                $scope.$apply();    
+                $scope.$apply();
                 return;
             }
 
             $scope.changeUser(response);
-            $scope.changePage('home');
+            $scope.changePage('profile');
+            $scope.$apply();
         });
     }
 

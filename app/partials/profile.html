@@ -1,0 +1,105 @@
+<div class="primary_background navbar navbar-default ">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" ng-init="isCollapsed = true" ng-click="isCollapsed = !isCollapsed">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand">Bienvenido, {{user._id}}</a>
+    </div>
+    <div class="navbar-collapse" ng-class="{collapse: isCollapsed}">
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                <a title="Tu colección de cartas"
+                   href="#" ng-click="changePage('collection')">
+                    <i class="mdi-content-content-copy navbar-icon"></i>
+                    Tus Cartas
+                </a>
+            </li>
+            <li>
+                <a title="Puntuaciones más altas"
+                   href="#" ng-click="changePage('highscores')">
+                    <i class="mdi-editor-insert-chart navbar-icon"></i>
+                    Puntuajes
+                </a>
+            </li>
+            <li>
+                <a title="Créditos"
+                   href="#" ng-click="changePage('credits')">
+                    <i class="mdi-action-receipt navbar-icon"></i>
+                    Créditos
+                </a>
+            </li>
+            <li>
+                <a title="Salir"
+                   href="#" ng-click="logOut()">
+                    <i class="mdi-action-exit-to-app navbar-icon"></i>
+                    Salir
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div id="main" class="row" style='font-family: "myFirstFont", sans-serif;'>
+    <div class="profile_box col-xs-6 col-sm-3 col-md-2 col-xs-offset-1 col-md-offset-1 recuadro-blanco redondeado">
+        <h2 class="main_title text-center gothic" style="color: #993300;">{{user._id}}</h2>
+        <!-- Imagen de perfil que deberia buscarse en la base de datos -->
+        <img src="{{profileCardImage}}" ng-click="showCard()" width="100%" height="100%">
+        <h5 class="title gothic"> Niveles Desbloqueados: </h5>
+        <h4 class="subtitle text-center gothic"> {{user.levels.length}} </h4>
+        <h5 class="title gothic"> Mayor Puntaje: </h5>
+        <h4 class="subtitle text-center gothic"> {{user.highscore}} </h4>
+        <h5 class="title gothic"> Categoria: </h5>
+        <h4 class="subtitle text-center gothic"> {{category}} </h4>
+        <h5 class="title gothic"> Cartas Ganadas: </h5>
+        <h4 class="subtitle text-center gothic"> {{user.cards.length}} </h4>
+
+    </div>
+    <div class="col-xs-10 col-sm-6 col-md-6 col-sm-offset-1 col-xs-offset-1 recuadro-blanco redondeado seleccionar-modo">
+      <div class="row">
+        <button id="button_play" type="button" class="btn btn-block button_play" ng-click="changePage('home')"> <img src="images/solitario.png"><br>Solitario </button>
+      </div>
+      <div class="row">
+        <button id="button_multiplayer" type="button" class="btn btn-block button_multiplayer" ng-click="changePage('multiplayer-level')"><img src="images/multijugador.png"><br>Multijugador </button>
+      </div>
+   </div>
+
+    <!-- Alertas Dialogos Modales -->
+    <div id="alerts" class="modal gothic" style="display: none;">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header" style="color: black; text-align: center;">
+            <h4 class="modal-title gothic">¡Atención!</h4>
+          </div>
+          <div class="modal-body textAlert gothic" style="color: black;">
+            <p>{{textAlert}}</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary gothic" data-dismiss="modal" style="background-color: #993300;"
+                    ng-click="closeAlert()">
+              Aceptar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="modal" class="modal gothic" style="display: none;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title gothic" style="color: #993300;">Carta de Perfil</h4>
+                </div>
+                <div class="modal-body" style="text-align:center">
+                    <img class="modal-image" src="{{profileCardImage}}" height="80%" width="80%">
+                    <p style="text-align:center; padding-top:5%;">¡Mientras más cartas ganes, más cartas de Perfil puedes conseguir!</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary gothic" id="button_close_modal" ng-click="hideCard()">CERRAR<div class="ripple-wrapper"></div></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

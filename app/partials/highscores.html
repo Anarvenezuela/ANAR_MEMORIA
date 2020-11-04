@@ -1,51 +1,85 @@
 <div class="primary_background navbar navbar-default ">
     <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+        <button type="button" class="navbar-toggle" ng-init="isCollapsed = true" ng-click="isCollapsed = !isCollapsed">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         </button>
-        <a href="#" class="navbar-brand" ng-click="changePage('home')">
+        <a href="#" class="navbar-brand" ng-click="changePage('profile')">
             <i class="mdi-navigation-arrow-back navbar-icon"></i>
         </a>
         <a class="navbar-brand">Mejores Puntuaciones</a>
     </div>
-    <div class="navbar-collapse collapse navbar-responsive-collapse">
+    <div class="navbar-collapse" ng-class="{collapse: isCollapsed}">
         <ul class="nav navbar-nav navbar-right">
             <li>
-                <a href="#" ng-click="changePage('collection')">
+                <a title="Tu colección de cartas"
+                   href="#" ng-click="changePage('collection')">
                     <i class="mdi-content-content-copy navbar-icon"></i>
+                    Tus Cartas
                 </a>
             </li>
             <li>
-                <a href="#" ng-click="changePage('highscores')">
+                <a title="Puntuaciones más altas"
+                   href="#" ng-click="changePage('highscores')">
                     <i class="mdi-editor-insert-chart navbar-icon"></i>
+                    Puntuajes
                 </a>
             </li>
             <li>
-                <a href="#" ng-click="logOut()">
+                <a title="Créditos"
+                   href="#" ng-click="changePage('credits')">
+                    <i class="mdi-action-receipt navbar-icon"></i>
+                    Créditos
+                </a>
+            </li>
+            <li>
+                <a title="Salir"
+                   href="#" ng-click="logOut()">
                     <i class="mdi-action-exit-to-app navbar-icon"></i>
+                    Salir
                 </a>
             </li>
         </ul>
     </div>
 </div>
 
-
 <div class="col-xs-1"></div>
 <div class="col-xs-10">
+<div class="recuadro">
+    <div class="well redondeado">
+        <table style="margin:auto;text-align: left;">
+            <thead>
+                    <th class="col-xs-6">Tu usuario</th>
+                    <th class="col-xs-3">Puntuación Solitario</th>
+                    <th class="col-xs-3">Puntuación Multijugador</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr style="border-bottom: 1px solid #E0E0E0; height:50px;" ng-class="{'current_user': false}">
+                    <td class="col-xs-6" style="text-align: left !important; font-weight: bold;">{{user._id}}</td>
+                    <td class="col-xs-3"style="">{{user.highscore}}</td>
+                    <td class="col-xs-3"style="">{{user.multiplayer_highscore}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+<div class="well redondeado">
     <table style="margin:auto;text-align: left;">
         <thead>
-            <tr>
-                <th class="col-xs-7">Usuario</th>
-                <th class="col-xs-3">Puntuación</th>
+                <th class="col-xs-6">Los 25 mejores</th>
+                <th class="col-xs-3">Puntuación Solitario</th>
+                <th class="col-xs-3">Puntuación Multijugador</th>
             </tr>
         </thead>
         <tbody>
             <tr style="border-bottom: 1px solid #E0E0E0; height:50px;" ng-repeat='u in users' ng-class="{'current_user': u.doc._id == user._id}">
-                <td class="col-xs-7" style="text-align: left !important; font-weight: bold;">{{u.doc._id}}</td>
+                <td class="col-xs-6" style="text-align: left !important; font-weight: bold;">{{u.doc._id}}</td>
                 <td class="col-xs-3"style="">{{u.doc.highscore}}</td>
-            </tr>    
+                <td class="col-xs-3"style="">{{u.doc.multiplayer_highscore}}</td>
+            </tr>
         </tbody>
     </table>
+    </div>
+</div>
 </div>

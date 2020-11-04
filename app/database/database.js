@@ -1,10 +1,15 @@
-// Atts: id, password, levels [1..*], cards [1..*], highscore
-var db_user = new PouchDB('ANAR_USER');
+// Atts: id, password, levels [1..*], cards [0..*], highscore, hands
+// Descomentar para usar base de datos remota
+//var db_user = new PouchDB('http://anar-user-leotms.c9users.io:8080/anar_user', {ajax: {timeout: 10000}});
+// Descomentar para usar base de datos local
+var db_user  = new PouchDB('anar_user');
 // Atts: id, name, cards, numPieces, time, difficulty, imageName
 // Functions: getPieces(), getCardsOnWin(), getPoints()
-var db_level = new PouchDB('ANAR_LEVEL');
+//var db_level = new PouchDB('http://anar-user-leotms.c9users.io:8080/anar_level');
 // Atts: id, name, image, description, number
-var db_card = new PouchDB('ANAR_CARD');
+//var db_card  = new PouchDB('http://anar-user-leotms.c9users.io:8080/anar_card');
+var db_level = new PouchDB('anar_level');
+var db_card  = new PouchDB('anar_card');
 
 function DBCreateDB() {
     // Buscamos todos los docs en la base de niveles. Si no hay los creamos.
@@ -36,8 +41,10 @@ function DBregisterUser(id, password, callback) {
         _id: id,
         password: password,
         highscore: 0,
+        multiplayer_highscore: 0,
         levels: ["0"],
-        cards: []
+        cards: [],
+        hands: 0
     };
 
     db_user.put(user).then(function(result) {
@@ -78,7 +85,7 @@ function DBGetHighscores(callback) {
 
 function DBUpdateUser(user, callback) {
     db_user.put(user).then(function(result) {
-        callback(null, user);
+        callback(null, result);
     }).catch(function(err) {
         callback(err.status, null);
     });
@@ -103,8 +110,6 @@ function shuffle(o){ //try this shuffle function
     for (var i = min; i < max; i++) {
         result.push(i.toString());
     }
-
-    result = shuffle(result);
 
     var reverse = result.reverse();
 
